@@ -1,0 +1,22 @@
+當循環中遇到EXIT語句，循環立即終止
+
+================================================================
+
+DECLARE
+   a number(2) := 10;
+BEGIN
+   -- while loop execution 
+   WHILE a < 20 LOOP
+      dbms_output.put_line ('value of a: ' || a);
+      a := a + 1;
+
+      IF a > 15 THEN
+         EXIT;
+
+      END IF;
+
+   END LOOP;
+   -- after exit, control resumes here
+   dbms_output.put_line('After Exit a is: ' || a);
+END;
+/

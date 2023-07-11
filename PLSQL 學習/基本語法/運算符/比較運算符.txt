@@ -1,0 +1,82 @@
+LIKE 運算符 範例：
+
+'Z%A_p' ：Z開頭，p結尾
+
+‘N%A_i’ ：N開頭，i結尾
+
+========================================================================
+
+DECLARE
+
+-- PROCEDURE
+PROCEDURE compare (value  varchar2,  pattern varchar2 ) is
+BEGIN
+   IF value LIKE pattern THEN
+      dbms_output.put_line ('True');
+   ELSE
+      dbms_output.put_line ('False');
+   END IF;
+END;
+
+BEGIN
+   compare('Zara Ali', 'Z%A_p');
+   compare('Nuha Ali', 'N%A_i');
+END;
+/
+
+========================================================================
+
+BETWEEN 運算符 範例：
+
+DECLARE
+   x number(3) := 10;
+BEGIN
+   IF (x between 5 and 20) THEN
+      dbms_output.put_line('True');
+   ELSE
+      dbms_output.put_line('False');
+   END IF;
+   
+   IF (x BETWEEN 5 AND 10) THEN
+      dbms_output.put_line('True');
+   ELSE
+      dbms_output.put_line('False');
+   END IF;
+   
+   IF (x BETWEEN 11 AND 20) THEN
+      dbms_output.put_line('True');
+   ELSE
+      dbms_output.put_line('False');
+   END IF;
+END;
+/
+
+========================================================================
+
+IN和IS NULL運算符 範例：
+
+DECLARE
+   letter varchar2(1) := 'm';
+BEGIN
+   IF (letter in ('a', 'b', 'c')) THEN
+      dbms_output.put_line('True');
+   ELSE
+      dbms_output.put_line('False');
+   END IF;
+ 
+   IF (letter in ('m', 'n', 'o')) THEN
+       dbms_output.put_line('True');
+   ELSE
+      dbms_output.put_line('False');
+   END IF;
+   
+   IF (letter is null) THEN
+    dbms_output.put_line('True');
+   ELSE
+      dbms_output.put_line('False');
+   END IF;
+END;
+/
+
+========================================================================
+

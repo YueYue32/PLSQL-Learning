@@ -1,0 +1,25 @@
+原本是
+
+IF a > 15 THEN
+     EXIT;
+
+=================================================
+
+
+改成以下範例，因為沒有IF了，所以要把 END IF 也移除
+
+DECLARE
+   a number(2) := 10;
+BEGIN
+   -- while loop execution 
+   WHILE a < 20 LOOP
+      dbms_output.put_line ('value of a: ' || a);
+      a := a + 1;
+
+      EXIT WHEN a > 15;
+
+   END LOOP;
+   -- after exit, control resumes here
+   dbms_output.put_line('After Exit a is: ' || a);
+END;
+/

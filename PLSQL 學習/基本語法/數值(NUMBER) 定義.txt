@@ -1,0 +1,60 @@
+https://matthung0807.blogspot.com/2017/08/oracle-number-data-type.html
+
+=======================================================================================
+
+NUMBER(precision, scale)
+
+	precision為總位數，最多為38(包含小數點，小數點占一個位數空間)
+
+	scale為小數點後的位數
+
+注意：
+
+	如果輸入的值是整數，例如：25
+
+	系統會判斷成25.，那麼precision數值至少設定”3” (2+1，1是小數點占的空間)
+
+	也就是說，”precision”的數值是看我們眼睛看過去，輸入數值的位數+1
+
+	如果是輸入”7”，”precision” = 2
+
+	如果是輸入”777”，”precision” = 4
+
+	如果是輸入”77777”，”precision” = 6
+
+	以此類推
+
+	如果 ”precision”的數值 < 輸入數值的位數+1，會報錯
+
+	numeric or value error: number precision too large
+
+================================================================
+
+數值定義範例：
+
+輸入數值 = 25.1333
+
+ ”precision”的數值 至少要是"3”，不然會報錯
+
+設定number(3, 1)，只會讀取到小數點後一位，小數點後第二位 會四捨五入
+
+declare
+   /*
+   變數名稱 數據類型 (總位數，小數點後位數)
+   */
+
+   sal number(3, 1);
+
+begin
+  /* || 是連接符
+  */
+
+   sal:=25.1533;
+
+   dbms_output.put_line('sal=' || to_char(sal));
+
+
+exception when others then
+    dbms_output.put_line(sqlerrm);
+end;
+/

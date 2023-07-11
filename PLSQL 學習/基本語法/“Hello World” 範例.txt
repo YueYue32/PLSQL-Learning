@@ -1,0 +1,11 @@
+DECLARE
+
+	/* message 變數名稱
+		 vachar2(20) 宣告字串 限制數量20個字元
+		：=
+	*/ 
+   message  varchar2(20):= 'Hello, World!';
+BEGIN
+   dbms_output.put_line(message);
+END;
+/

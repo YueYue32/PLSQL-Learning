@@ -1,0 +1,36 @@
+DECLARE
+   --declarations
+   a number(5,2); 
+   b number(5,2); 
+   
+BEGIN 
+   -- processing
+   a := 5; 
+   b := 6; 
+   
+   -- output
+   IF (a = b) then
+      dbms_output.put_line('a = b');
+   ELSE
+      dbms_output.put_line('a != b');
+   END IF;
+
+   dbms_output.put_line('******************');
+
+   IF (a < b) then
+      dbms_output.put_line('a < b');
+   ELSE
+      dbms_output.put_line('a !< b');
+   END IF;
+
+   dbms_output.put_line('******************');
+
+
+   IF ( a > b ) THEN
+      dbms_output.put_line('a > b');
+   ELSE
+      dbms_output.put_line('a !> b');
+   END IF;
+
+END;
+/

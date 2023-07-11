@@ -1,0 +1,41 @@
+Oracle數據庫提供了大量的字符串數據類型
+
+如：
+
+	CHAR
+
+	NCHAR
+
+	VARCHAR2
+
+	NVARCHAR2
+
+	CLOB
+
+	NCLOB
+
+如果需要聲明一個可變長度的字符串時，必須提供該字符串的最大長度。
+
+如：
+
+	varchar2(30)
+
+========================================================================================
+
+DECLARE
+   name varchar2(20);
+   company varchar2(30);
+   introduction clob;
+   choice char(1);
+BEGIN
+   name := 'John Smith';
+   company := 'Infotech';
+   introduction := ' Hello! I''m John Smith from Infotech.';
+   choice := 'y';
+   IF choice = 'y' THEN
+      dbms_output.put_line(name);
+      dbms_output.put_line(company);
+      dbms_output.put_line(introduction);
+   END IF;
+END;
+/

@@ -1,0 +1,51 @@
+https://tomkuo139.blogspot.com/2015/04/oracle-plsql-array.html
+
+====================================================================================
+
+DECLARE
+
+   -- type 建立一個 陣列namesarray，陣列"最多"可容納5個元素，元素是10格字元以內的字串
+   type namesarray IS VARRAY(5) OF VARCHAR2(10);
+
+   -- type 建立一個 陣列grades，陣列"最多"可容納5個元素，元素是整數
+   type grades IS VARRAY(5) OF INTEGER;
+
+   -- 陣列namesarray，變數名稱是names
+   names namesarray;
+
+   -- grades，marks
+   marks grades;
+
+   -- 變數名稱total，數據類型是整數
+   total integer;
+
+
+BEGIN
+   -- 將5個元素屬於字串的元素，放入names陣列
+   names := namesarray('Kavita', 'Pritam', 'Ayan', 'Rishav','Aziz');
+
+   -- 將5個元素屬於字整數的元素，放入marks陣列
+   marks:= grades(98, 97, 78, 87, 92);
+
+   -- total 是 names陣列內總元素的數量(5，是數值)
+   total := names.count;
+
+   dbms_output.put_line('Total '|| total || ' Students');
+   dbms_output.put_line('');
+
+   -- 找出 'names'陣列中第2個元素
+   dbms_output.put_line('names陣列中第2個元素(絕對位置) = '||names(2));
+   dbms_output.put_line('');
+
+
+   -- FOR i in 1 .. 5 LOOP
+   FOR i in 1 .. total LOOP
+      dbms_output.put_line('Student: ' || names(i) || '
+      Marks: ' || marks(i));
+
+      dbms_output.put_line('');
+
+   END LOOP;
+
+END;
+/

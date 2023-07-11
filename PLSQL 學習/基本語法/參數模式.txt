@@ -1,0 +1,61 @@
+IN-OUT：不同參數
+
+DECLARE
+   a number;
+   b number;
+   c number;
+
+-- 建立一個功能 PROCEDURE (~~~~~) IS
+-- x IN number 表示x是接收參數
+-- y IN number 表示y是接收參數
+-- z OUT number 表示z是回傳參數
+-- PROCEDURE 沒有回傳值，所以一定要加上OUT 參數
+PROCEDURE findMin(x IN number, y IN number, z OUT number) IS
+
+
+BEGIN
+   IF x < y THEN
+      z:= x;
+   ELSE
+      z:= y;
+   END IF;
+END; 
+
+BEGIN
+   a:= 23;
+   b:= 45;
+
+	-- 呼叫 findMin 功能
+   findMin(a, b, c);
+   dbms_output.put_line(' Minimum of (23, 45) : ' || c);
+END;
+/
+
+===============================================================================
+
+IN-OUT：相同參數
+
+DECLARE
+   a number;
+   tel varchar2(20);
+
+
+PROCEDURE squa(x IN OUT number) IS
+  
+BEGIN
+    x := x * x;
+
+END; 
+
+BEGIN
+   a:= 8;
+   tel := to_char(a);
+
+   squa(a);
+   dbms_output.put_line(tel || ' * ' || tel || ' = ' || a);
+
+END;
+/
+
+===============================================================================
+

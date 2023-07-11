@@ -1,0 +1,44 @@
+DECLARE
+   greetings varchar2(11) := 'hello world';
+
+BEGIN
+   dbms_output.put_line('ASCII = '||ASCII(greetings));
+
+   dbms_output.put_line('UPPER = '||UPPER(greetings));
+   
+   dbms_output.put_line('LOWER = '||LOWER(greetings));
+   
+   dbms_output.put_line('INITCAP = '||INITCAP(greetings));
+   
+   dbms_output.put_line ( '從第1個字母開始，向後 顯示出1個字元 = '||SUBSTR (greetings, 1, 1));
+   
+   dbms_output.put_line ('從最後1個字母開始，向後 顯示出1個字元 ='||SUBSTR (greetings, -1, 1));
+   
+   dbms_output.put_line ( '從第7個字母開始，向後 顯示出5個字元 = '||SUBSTR (greetings, 7, 5));
+   
+   dbms_output.put_line ( '從第4個字母開始，向後 顯示出所有字元 = '||SUBSTR (greetings, 4));
+   
+   dbms_output.put_line ( '顯示出"e"這個字元，總共有幾個 = '||INSTR (greetings, 'e'));
+
+END;
+/
+
+====================================================================================================
+
+DECLARE
+   greetings varchar2(30) := '...~..Hello World..!..';
+BEGIN
+   -- 從字串"右邊"開始，移除掉"."字元，直到出現其他字元
+   dbms_output.put_line(RTRIM(greetings,'.'));
+
+   -- 從字串"左邊"開始，移除掉"."字元，直到出現其他字元
+   dbms_output.put_line(LTRIM(greetings, '.'));
+
+   -- 分別從字串"左邊"和"右邊"開始，移除掉"."字元，直到出現其他字元
+   dbms_output.put_line(TRIM( '.' from greetings));
+
+END;
+/
+
+====================================================================================================
+

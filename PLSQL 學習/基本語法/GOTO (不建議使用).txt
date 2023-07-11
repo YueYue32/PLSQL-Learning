@@ -1,0 +1,40 @@
+GOTO語句提供無條件跳轉到在同一個子程序的GOTO標簽的語句
+
+不建議使用原因：
+
+	程序會變得很亂、難以理解
+
+GOTO使用限制：
+
+	- goto語句不能跳轉到IF語句，CASE語句，循環語句或子塊。
+	- goto語句不能從一個分支IF語句子句到另一個或從一個CASE語句WHEN子句到另一個。
+	- goto語句不能從外部塊分支成子塊(即一個內BEGIN-END塊)。
+	- goto語句不能分支出來一個子程序。提前結束子程序，要麼使用RETURN語句或子程序結束前在正確的GOTO分支的地方。
+	- goto語句不能從一個異常處理分支回到當前BEGIN-END塊。但是，GOTO語句可以從一個異常處理程序跳轉到一個封閉塊。
+
+=============================================================================================
+
+當a = 15時，a = a+3，並且跳到”loopstart”這個LOOP中
+
+
+DECLARE
+   a number(2) := 10;
+BEGIN
+
+  --宣告一個LOOP 階層名稱
+   <<loopstart>>
+   -- while loop execution 
+  
+   WHILE a < 20 LOOP
+      dbms_output.put_line ('value of a: ' || a);
+      a := a + 1;
+
+      IF a = 15 THEN
+         a := a + 4;
+
+         GOTO loopstart;
+
+      END IF;
+   END LOOP;
+END;
+/

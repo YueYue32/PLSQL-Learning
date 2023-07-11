@@ -1,0 +1,18 @@
+DECLARE
+   --declarations
+   a number(5,2); 
+   b number(5,2); 
+   
+BEGIN 
+   -- processing
+   a := 5; 
+   b := 6; 
+   
+   -- output
+   dbms_output.put_line(a + b);
+   dbms_output.put_line(a * b);
+   dbms_output.put_line(a / b);
+   dbms_output.put_line(a ** b);
+
+END;
+/

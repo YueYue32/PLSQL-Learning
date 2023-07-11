@@ -1,0 +1,35 @@
+可以讓用戶自行定義 使用的參數，PL/SQL預定義了一些子類型的封裝標準。
+
+例如，PL/SQL預定義的子類型CHARACTER和INTEGER如下：
+
+SUBTYPE CHARACTER IS CHAR;
+SUBTYPE INTEGER IS NUMBER(38,0);
+
+========================================================================
+
+子定義範例：
+declare
+  /* 
+  自定義 name數據類型是varchar2 上限10個字元、message數據類型是varchar2 上限100個字元
+  定義完之後 name、message 就都會變成一種數據類型了
+ */
+   SUBTYPE name IS varchar2(10);
+   SUBTYPE message IS varchar2(100);
+
+   /*
+   變數名稱 數據類型
+   */
+   salutation name;
+   greetings message;
+begin
+  /* || 是連接符
+  */
+   salutation := 'Reader ';
+   greetings := 'Welcome to the World of PL/SQL';
+   dbms_output.put_line('Hello ' || salutation || greetings ||'.');
+exception when others then
+    dbms_output.put_line(sqlerrm);
+end;
+/
+
+========================================================================

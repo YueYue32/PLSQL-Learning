@@ -1,0 +1,88 @@
+https://matthung0807.blogspot.com/2020/09/oracle-sysdate-10-1440.html
+
+=================================================================================
+
+
+SYSDATE是Oracle提供取得目前日期的函式。
+
+在計算SYSDATE取得的日期時，整數1代表1天，例如SYSDATE - 1代表前一天；
+
+計算分鐘數的話就要把1天轉成分鐘比例來計算，一天共有1440分鐘（24小時 * 60分鐘），所以一天中的10分鐘為10 / 1440。
+
+MM = 月份
+
+DD = 日
+
+YYYY = 年份
+
+HH24 = 幾時(這個參數不知道是對應哪個時區，顯示結果不是台灣時區時間)  24時制
+
+MI = 幾分(因為oracle沒有分大小寫，為了和月份MM區分，所以分鐘是寫成MI)
+
+SS = 幾秒
+
+=================================================================================
+
+
+當天
+
+declare
+  /* l_today = 變數名稱
+     date = 數據類型
+     sysdate = Oracle提供取得目前日期的函式
+ */
+    l_today date := sysdate;
+begin
+  /* || 是連接符
+     to_char = 轉換成字元
+  */
+    dbms_output.put_line(
+           'Today is '||to_char(l_today,'MM-DD-YYYY HH24:MI:SS'));
+exception when others then
+    dbms_output.put_line(sqlerrm);
+end;
+/
+
+=================================================================================
+
+昨天
+
+declare
+  /* l_today = 變數名稱
+     date = 數據類型
+     sysdate = Oracle提供取得目前日期的函式
+ */
+    l_today date := sysdate;
+begin
+  /* || 是連接符
+     to_char = 轉換成字元
+  */
+    dbms_output.put_line(
+           'Today is '||to_char(l_today - 1,'YYYY-MM-DD hh24:mi:ss'));
+exception when others then
+    dbms_output.put_line(sqlerrm);
+end;
+/
+
+
+
+=================================================================================
+
+10分鐘前
+
+declare
+  /* l_today = 變數名稱
+     date = 數據類型
+     sysdate = Oracle提供取得目前日期的函式
+ */
+    l_today date := sysdate;
+begin
+  /* || 是連接符
+     to_char = 轉換成字元
+  */
+    dbms_output.put_line(
+           'Today is '||to_char(l_today - (10/1440),'YYYY-MM-DD hh24:mi:ss'));
+exception when others then
+    dbms_output.put_line(sqlerrm);
+end;
+/

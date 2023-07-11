@@ -1,0 +1,33 @@
+DECLARE
+   a number(2);
+BEGIN
+   FOR a in 10 .. 20 LOOP
+       dbms_output.put_line('value of a: ' || a);
+  END LOOP;
+END;
+/
+
+=======================================================================
+
+帶有標記的 FOR LOOP：
+
+	用雙尖括號括起來(<<和>>)
+
+
+	<<該LOOP的名稱>>，放在FOR LOOP的上一行
+	操作
+
+	END LOOP “該LOOP的名稱”
+
+
+DECLARE
+   a number(2) ;
+BEGIN
+  << LLoop >>
+   FOR a IN  10 .. 20 LOOP
+      dbms_output.put_line('value of a: ' || a);
+   END LOOP LLoop;
+END;
+/
+
+=======================================================================
